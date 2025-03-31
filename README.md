@@ -12,8 +12,7 @@
 
 A locally running instance of MariaDB on port `3306` with root password `admin` is required for this app to run. You can easily set it up via Docker:
 
-- `docker pull mariadb`, then
-- `docker run --name mariadbtest -e MYSQL_ROOT_PASSWORD=admin -p 3306:3306 -d`
+- `docker run --name mariadbtest -e MYSQL_ROOT_PASSWORD=admin -p 3306:3306 -d docker.io/library/mariadb:10.3`
 
 You will need to run the app with environment variables from the .env file. Example using godotenv:
 
@@ -25,3 +24,7 @@ You will need to run the app with environment variables from the .env file. Exam
 Run unit and integration tests via
 
 - `godotenv -f .env go test .`
+
+### Notes
+
+There is a Dockerfile and a compose.yaml, but I didn't manage to get it working in time. It seems like a specific host must be required for container communication instead of the `127.0.0.1` in my setup
