@@ -1,0 +1,19 @@
+version: "2"
+sql:
+  - engine: "mysql"
+    queries: "query.sql"
+    schema: "schema.sql"
+    gen:
+      go:
+        package: "sqlcout"
+        out: "sqlcout"
+        emit_json_tags: true
+        json_tags_case_style: "camel"
+        json_tags_id_uppercase: true
+        rename:
+          country_iso2: "CountryISO2"
+        overrides:
+        - column: swift_codes.country_iso2
+          go_struct_tag: 'json:"countryISO2"'
+        - column: countries.country_iso2
+          go_struct_tag: 'json:"countryISO2"'

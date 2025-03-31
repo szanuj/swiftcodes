@@ -1,0 +1,21 @@
+services:
+  app:
+    container_name: swiftcodes_api
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+    depends_on:
+      - db
+    links:
+      - db
+    restart: always
+  db:
+    image: mariadb
+    container_name: swiftcodes_db
+    ports:
+      - "3306:3306"
+    environment:
+      MARIADB_ROOT_PASSWORD: admin
+    restart: always
